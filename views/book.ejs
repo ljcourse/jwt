@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <% if (blog.length === 0) { %>
+        <p>no blogs found</p>
+        <% } else { %> <% blog.forEach(b=> { %>
+            <div>
+                <h2><%= b.title %></h2>
+                <p>Plot: <%= b.plot%></p>
+                <p>Year: <%= b.year%></p>
+                <p>Author: <%= b.author %></p>
+                <img src="/img/blogs/<%=b.picture%>">                    
+                <p>Rating:<%= b.rating %></p>
+                <p>Genre: <%= b.genre %></p>
+                <p>Price: <%= b.price %></p>
+                <form method="POST" action="/view/delete/<%= b._id %>">
+                    <button type="submit">delete</button>
+                </form>
+                <h2>Update</h2>
+                <form method="POST" enctype="multipart/form-data" action="/view/update/<%= b._id %>">
+                    <label for="title">title: </label>
+                    <input type="text" name="title"  />
+                    <label for="plot">plot: </label>
+                    <input type="text" name="plot"  />
+                    <label for="year">year: </label>
+                    <input type="number" name="year"  />
+                    <label for="author">author: </label>
+                    <input type="text" name="author" />
+                    <label for="picture">picture: </label>
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="picture" />
+                    <label for="rating">rating: </label>
+                    <input type="text" name="rating" />
+                    <label for="genre">genre: </label>
+                    <input type="text" name="genre" />
+                    <label for="preice">price: </label>
+                    <input type="number" name="price" />
+                    <button type="submit">update book</button>
+                </form>
+                <% }); %> <%} %>
+            </div>
+            <br>
+            <hr>
+            <h2>Post</h2>
+            
+            <div>
+                <form method="POST" enctype="multipart/form-data" action="/view">
+                    <label for="title">title: </label>
+                    <input type="text" name="title"  />
+                    <label for="plot">plot: </label>
+                    <input type="text" name="plot"  />
+                    <label for="year">year: </label>
+                    <input type="number" name="year"  />
+                    <label for="author">author: </label>
+                    <input type="text" name="author" />
+                    <label for="picture">picture: </label>
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="picture" />
+                    <label for="rating">rating: </label>
+                    <input type="text" name="rating" />
+                    <label for="genre">genre: </label>
+                    <input type="text" name="genre" />
+                    <label for="preice">price: </label>
+                    <input type="number" name="price" />
+                    <button type="submit">post new book</button>
+                </form>
+            </div>
+</div>
+</body>
+</html>
